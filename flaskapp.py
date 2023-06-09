@@ -13,6 +13,7 @@ import subprocess
 import wget
 currentpath="."
 import webbrowser
+import urllib
 
 app=Flask(__name__)
 
@@ -32,7 +33,7 @@ def load_model():
 	path=currentpath+"/"+model_path
 	check_file=os.path.isfile(path)
 	if not check_file:
-		wget.download("https://gpt4all.io/models/ggml-gpt4all-j-v1.3-groovy.bin",path)
+		os.system("curl https://gpt4all.io/models/ggml-gpt4all-j-v1.3-groovy.bin -o ./models/ggml-gpt4all-j-v1.3-groovy.bin")
 	embeddings = HuggingFaceEmbeddings(model_name=embeddings_model_name)
 	db = Chroma(persist_directory=persist_directory, embedding_function=embeddings, client_settings=CHROMA_SETTINGS)
 	retriever = db.as_retriever(search_kwargs={"k": target_source_chunks})
