@@ -70,11 +70,11 @@ def askqs():
 	res = qa(query)
 	answer, docs = res['result'], res['source_documents']
 	print("Answer: ",answer)
-	x=answer+"\n\nSources:"
+	#x=answer+"\n\nSources:"
 	#for document in docs:
 	#	x=x+"\n> " + document.metadata["source"] + ":"
 	#	x=x+document.page_content
-	return x
+	return answer
 
 
 def parse_arguments():
